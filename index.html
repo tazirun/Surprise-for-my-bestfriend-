@@ -3,105 +3,135 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Best Friend Surprise for Shorna 💙</title>
+<title>It's a surprise for my bestfriend 💙</title>
+
 <style>
+
 body{
-  font-family: Arial, sans-serif;
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  overflow:hidden;
-  animation:bgpulse 6s infinite alternate;
-  position: relative;
+font-family: Arial, sans-serif;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+height:100vh;
+text-align:center;
+overflow:hidden;
+animation:bg 6s infinite alternate;
 }
 
-@keyframes bgpulse{
-  0%{background:#87CEEB;}
-  100%{background:#bfe9ff;}
+@keyframes bg{
+0%{background:#87CEEB;}
+100%{background:#bfe9ff;}
 }
 
 h1{
-  color:white;
-  font-size:28px;
-  text-shadow:2px 2px 8px rgba(0,0,0,0.4);
+color:white;
+font-size:28px;
 }
 
 button{
-  padding:14px 30px;
-  font-size:18px;
-  margin:12px;
-  border:none;
-  border-radius:10px;
-  cursor:pointer;
-  transition:0.3s;
-  position: relative;
-}
-
-button:hover{
-  transform:scale(1.15);
+padding:14px 28px;
+font-size:18px;
+margin:12px;
+border:none;
+border-radius:10px;
+cursor:pointer;
 }
 
 .sure{
-  background:#ff5a7a;
-  color:white;
+background:#ff5a7a;
+color:white;
 }
 
 .nah{
-  background:white;
-  color:#333;
+background:white;
 }
 
 #message{
-  margin-top:35px;
-  font-size:20px;
-  color:white;
-  max-width:90%;
-  opacity:0;
-  transition:1s;
-  text-shadow:2px 2px 8px rgba(0,0,0,0.4);
+color:white;
+font-size:22px;
+max-width:85%;
+margin-top:30px;
+display:none;
 }
 
 .icon{
-  position:absolute;
-  font-size:28px;
-  pointer-events:none;
-  animation:float 5s linear forwards;
+position:absolute;
+font-size:28px;
+animation:float 6s linear forwards;
+pointer-events:none;
 }
 
 @keyframes float{
-  0%{transform:translateY(0);opacity:1;}
-  100%{transform:translateY(-700px) scale(1.5);opacity:0;}
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-700px);opacity:0;}
 }
 
-.confetti{
-  position:absolute;
-  width:10px;
-  height:10px;
-  animation:fall 3s linear forwards;
-}
-
-@keyframes fall{
-  0%{transform:translateY(0) rotate(0);}
-  100%{transform:translateY(600px) rotate(360deg);}
-}
 </style>
 </head>
 
 <body>
 
-<audio id="bgm" autoplay loop>
-  <source src="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3" type="audio/mpeg">
-  <!-- Replace above link with actual "Tera Yaar Hoon Main" mp3 hosted online -->
-</audio>
-
 <h1 id="question">You’re my best friend, right Shorna? 😎</h1>
 
 <div id="buttons">
-<button class="sure">Sure!</button>
-<button class="nah">Nah!</button>
+<button class="sure" onclick="yes()">Sure!</button>
+<button class="nah" onclick="no()">Nah!</button>
 </div>
 
-<div id="message
+<div id="message"></div>
+
+<script>
+
+const message=document.getElementById("message")
+
+function yes(){
+
+document.getElementById("question").style.display="none"
+document.getElementById("buttons").style.display="none"
+
+message.style.display="block"
+
+message.innerText=
+"Yesss! You’re the best and I’m lucky to have you, Shorna! 🤍 I love you the most! ❤️ I can’t live without you 🥹 For me, you are my mitochondria 💖 Don’t even dare to leave or hurt me 🫡"
+
+}
+
+function no(){
+
+document.getElementById("question").style.display="none"
+document.getElementById("buttons").style.display="none"
+
+message.style.display="block"
+
+message.innerText=
+"Impossible! We’re stuck as best friends forever, Shorna! 😆 In this life and in every life! You can’t do anything without me 😒 So there’s no option lokkhi! 😉"
+
+}
+
+function createIcon(){
+
+const icons=["⭐","😄","❤️","💖","🥰","✨"]
+
+const i=document.createElement("div")
+
+i.className="icon"
+
+i.innerText=icons[Math.floor(Math.random()*icons.length)]
+
+i.style.left=Math.random()*window.innerWidth+"px"
+
+i.style.top=Math.random()*window.innerHeight+"px"
+
+document.body.appendChild(i)
+
+setTimeout(()=>i.remove(),6000)
+
+}
+
+setInterval(createIcon,300)
+
+</script>
+
+</body>
+</html>
