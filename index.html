@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Best Friend Surprise for Shorna 💙</title>
-
 <style>
 body{
   font-family: Arial, sans-serif;
@@ -67,20 +66,20 @@ button:hover{
 
 .icon{
   position:absolute;
-  font-size:24px;
+  font-size:28px;
   pointer-events:none;
-  animation:float 4s linear forwards;
+  animation:float 5s linear forwards;
 }
 
 @keyframes float{
   0%{transform:translateY(0);opacity:1;}
-  100%{transform:translateY(-600px);opacity:0;}
+  100%{transform:translateY(-700px) scale(1.5);opacity:0;}
 }
 
 .confetti{
   position:absolute;
-  width:8px;
-  height:8px;
+  width:10px;
+  height:10px;
   animation:fall 3s linear forwards;
 }
 
@@ -94,77 +93,15 @@ button:hover{
 <body>
 
 <audio id="bgm" autoplay loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  <source src="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3" type="audio/mpeg">
+  <!-- Replace above link with actual "Tera Yaar Hoon Main" mp3 hosted online -->
 </audio>
 
-<h1>You’re my best friend, right Shorna? 😎</h1>
+<h1 id="question">You’re my best friend, right Shorna? 😎</h1>
 
-<div>
+<div id="buttons">
 <button class="sure">Sure!</button>
 <button class="nah">Nah!</button>
 </div>
 
-<div id="message"></div>
-
-<script>
-const msg=document.getElementById("message")
-const nahBtn=document.querySelector(".nah")
-
-function icon(x,y){
-  const icons=["⭐","😄","❤️"]
-  const i=document.createElement("div")
-  i.className="icon"
-  i.innerText=icons[Math.floor(Math.random()*icons.length)]
-  i.style.left=x+"px"
-  i.style.top=y+"px"
-  document.body.appendChild(i)
-  setTimeout(()=>i.remove(),4000)
-}
-
-setInterval(()=>{
-  icon(Math.random()*window.innerWidth,Math.random()*window.innerHeight)
-},500)
-
-document.addEventListener("mousemove",e=>icon(e.clientX,e.clientY))
-document.addEventListener("touchmove",e=>{
-  for(let t of e.touches){icon(t.clientX,t.clientY)}
-})
-
-function confetti(){
-  for(let i=0;i<40;i++){
-    const c=document.createElement("div")
-    c.className="confetti"
-    c.style.left=Math.random()*window.innerWidth+"px"
-    c.style.background=`hsl(${Math.random()*360},100%,60%)`
-    document.body.appendChild(c)
-    setTimeout(()=>c.remove(),3000)
-  }
-}
-
-function show(text){
-  confetti()
-  msg.style.opacity=0
-  setTimeout(()=>{
-    msg.innerText=text
-    msg.style.opacity=1
-  },300)
-}
-
-// Sure button
-document.querySelector(".sure").onclick=()=>{
-  show("Yesss! You’re best and I’m lucky to have you, Shorna! 🤍 I love you the most! ❤️ I can’t live without you 🥹 For me, you are my mitochondria 💖 Don’t even dare to leave or hurt me 🫡")
-}
-
-// Nah button moves randomly
-nahBtn.onclick=()=>{
-  const x=Math.random()*(window.innerWidth-100)
-  const y=Math.random()*(window.innerHeight-50)
-  nahBtn.style.position="absolute"
-  nahBtn.style.left=x+"px"
-  nahBtn.style.top=y+"px"
-  show("Impossible! We’re stuck as best friends forever, Shorna! 😆 In this life and in every life! You can’t do anything without me 😒 So there’s no option lokkhi! 😉")
-}
-
-</script>
-</body>
-</html>
+<div id="message
